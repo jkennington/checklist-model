@@ -68,7 +68,8 @@ angular.module('checklist-model', [])
     });
 
     // watch original model change
-    scope.$parent.$watch(attrs.checklistModel, function(newArr, oldArr) {
+    // Real parent model seems to be one level higher than was referenced here.
+    scope.$parent.$parent.$watch(attrs.checklistModel, function(newArr, oldArr) {
       scope.checked = contains(newArr, value);
     }, true);
   }
